@@ -1,6 +1,7 @@
 #ifndef TEST_H
 #define TEST_H
 #include <godot_cpp/classes/node3d.hpp>
+#include <flecs.h>
 using namespace godot;
 
 class Test : public Node3D {

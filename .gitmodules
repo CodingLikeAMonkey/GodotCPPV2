@@ -1,3 +1,7 @@
-[submodule "gdextension/godot-cpp"]
-	path = gdextension/godot-cpp
+[submodule "Libraries/godot-cpp"]
+	path = Libraries/godot-cpp
 	url = git@github.com:godotengine/godot-cpp.git
+
+[submodule "Libraries/flecs"]
+	path = Libraries/flecs
+	url = git@github.com:SanderMertens/flecs.git

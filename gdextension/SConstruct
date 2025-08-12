@@ -1,5 +1,5 @@
 #path to the godot-cpp SConstruct file
-env = SConscript('godot-cpp/SConstruct')
+env = SConscript('../Libraries/godot-cpp/SConstruct')
 
 #define include path for godot-cpp
 env.Append(CPPPATH='src/')
@@ -12,26 +12,17 @@ env.Append(CPPPATH='src/')
 src_files = env.Glob('src/*.cpp')
 
 if env['platform'] == 'windows':
-    # libpath is teh name of the shared library, inside parent folder
+    # libpath is the name of the shared library, inside parent folder
     # {specifiction for platform} {extension of library .dll}
     # other stuff is mostly from godot-cpp SConstruct
-    libpath = '../libtest{}{}'.format(env['suffix'], env['SHLIBSUFFIX'])
+    libpath = '../bin/libtest{}{}'.format(env['suffix'], env['SHLIBSUFFIX'])
     shared_lib = env.SharedLibrary(libpath, src_files)
     Default(shared_lib)
 elif env['platform'] == 'linux':
-    libpath = '../libtest{}{}'.format(env['suffix'], env['SHLIBSUFFIX'])
+    libpath = '../bin/libtest{}{}'.format(env['suffix'], env['SHLIBSUFFIX'])
     shared_lib = env.SharedLibrary(libpath, src_files)
     Default(shared_lib)
 elif env['platform'] == 'osx':
-    libpath = '../libtest{}{}'.format(env['suffix'], env['SHLIBSUFFIX'])
+    libpath = '../bin/libtest{}{}'.format(env['suffix'], env['SHLIBSUFFIX'])
     shared_lib = env.SharedLibrary(libpath, src_files)
     Default(shared_lib)
-# if env['platform'] == 'windows':
-#     # add windows specific flags
-#     env.Append(CPPFLAGS=['-DWIN32', '-D_WINDOWS'])
-# elif env['platform'] == 'linux':
-#     # add linux specific flags
-#     env.Append(CPPFLAGS=['-DLINUX_ENABLED'])
-# elif env['platform'] == 'osx':
-#     # add macOS specific flags
-#     env.Append(CPPFLAGS=['-DMACOS_ENABLED'])
